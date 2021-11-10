@@ -108,13 +108,19 @@ namespace Address_Book
 
         public void printDetails() // Printing contact details
         {
-
-            Console.WriteLine("Contact_Details");
-
-            for(int i=0;i<Contact.Count;i++)
+            if (Contact.Count != 0)
             {
-                Console.Write(Contact[i] + "   ");
-                Console.WriteLine("\n");
+                Console.WriteLine("Contact_Details");
+
+                for (int i = 0; i < Contact.Count; i++)
+                {
+                    Console.Write(Contact[i] + "   ");
+                    Console.WriteLine("\n");
+                }
+            }
+            else
+            {
+                Console.WriteLine("No address details were added");
             }
         }
 
@@ -128,6 +134,8 @@ namespace Address_Book
 
                 int  i=Contact.IndexOf(Name); ///finding the index of the name
                      editContactDetails(i); //passing the index to change the value
+                Console.WriteLine("Data is  edited :\n");
+
             }
             else
             {
@@ -144,6 +152,8 @@ namespace Address_Book
             {
                 int i = Contact.IndexOf(Name); ///finding the index of the name
                 deleteContactDetails(i); //passing the index to change the value
+                Console.WriteLine("Data is  deleted :\n");
+
             }
             else
             {
