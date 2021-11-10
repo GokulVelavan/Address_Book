@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections;
 
 namespace Address_Book
 {
@@ -16,6 +17,7 @@ namespace Address_Book
         int zipCode;
         long phoneNumber;
         string email;
+        ArrayList Contact = new ArrayList();
         public void getContactDetails()   // getting details from the person
         {
 
@@ -41,22 +43,27 @@ namespace Address_Book
             Console.WriteLine("Enter the Email");
             email = Console.ReadLine();
 
+            //Adding the contact details in array
+            Contact.Add(firstName);
+            Contact.Add(lastName);
+            Contact.Add(address[0]);
+            Contact.Add(state);
+            Contact.Add(zipCode);
+            Contact.Add(phoneNumber);
+            Contact.Add(email);
 
         }
 
         public void printDetails() // Printing contact details
         {
-            Console.WriteLine("First Name: " + firstName);
-            Console.WriteLine("Last Name: " + lastName);
-            Console.WriteLine("Address: " + address[0]);
-            Console.WriteLine("state: " + state);
-            Console.WriteLine("Zip Code: " + zipCode);
-            Console.WriteLine("Phone NUmber: " + phoneNumber);
-            Console.WriteLine("Email: " + email);
 
+            Console.WriteLine("Contact_Details");
 
-
-
+            for(int i=0;i<Contact.Count;i++)
+            {
+                Console.Write(Contact[i] + "   ");
+                Console.WriteLine("\n");
+            }
         }
     }
 }
