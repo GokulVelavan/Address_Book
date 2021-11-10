@@ -10,20 +10,51 @@ namespace Address_Book
     {
         static void Main(string[] args)
         {
+            bool decide = true;
             int n;
             Console.WriteLine("Welcome to Address Book.");
             AddressBook obj1 = new AddressBook(); //creating object
-            Console.WriteLine("Please enter how many contact you want to add");
-             n = Convert.ToInt32(Console.ReadLine());
-            for (int i = 0; i < n; i++)
+
+            while (decide)
             {
-                obj1.getContactDetails();
-                Console.WriteLine("\n");    
+
+                Console.WriteLine("1.AddNewContact\n2.PrintContact\n3.EditContact\n4.Exit");
+                Console.WriteLine("\nPlease Enter your choice");
+                int choice = Convert.ToInt32(Console.ReadLine());
+                switch (choice)
+                {
+
+                    case 1:
+                        Console.WriteLine("Please enter how many contact you want to add");
+                        n = Convert.ToInt32(Console.ReadLine());
+                        for (int i = 0; i < n; i++)
+                        {
+                            obj1.getContactDetails();
+                            Console.WriteLine("\n");
+
+                        }
+                        break;
+                    case 2:
+                obj1.printDetails(); //printing data
+                        break;
+                    case 3:
+                        obj1.editContact();
+                      
+                        break;
+
+                    case 4:
+                        decide = false;
+                        break;
+
+                    default:
+                        Console.WriteLine("Please Enter The Valid Data");
+                        break;
+                }
+               
+
 
             }
-
-
-            obj1.printDetails(); //printing data
+           
 
             Console.ReadLine();
 
