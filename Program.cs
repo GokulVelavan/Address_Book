@@ -25,7 +25,7 @@ namespace Address_Book
                 {
 
                     case 1:
-                        Console.WriteLine("Please enter how many contact you want to add");
+                        Console.WriteLine("Please enter how many contact you want to add:");
                         n = Convert.ToInt32(Console.ReadLine());
                         for (int i = 0; i < n; i++)
                         {
@@ -38,16 +38,15 @@ namespace Address_Book
                 obj1.printDetails(); //printing data
                         break;
                     case 3:
-                        obj1.editContact();
-                      
+                        obj1.editContact();//edit contact details
                         break;
 
                     case 4:
-                        obj1.removeContact();
+                        obj1.removeContact(); //remove contact details
                         break;
 
                     case 5:
-                        decide = false;
+                        decide = false;//code to exit the loop
                         break;
                     default:
                         Console.WriteLine("Please Enter The Valid Data");
