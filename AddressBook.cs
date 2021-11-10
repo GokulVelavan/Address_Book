@@ -80,7 +80,7 @@ namespace Address_Book
             Console.WriteLine("Enter the Email");
             email = Console.ReadLine();
 
-            //Adding the contact details in array
+            //Editing the contact details by the index
             Contact[i++] = firstName;
             Contact[i++] = (lastName);
             Contact[i++] = (address[0]);
