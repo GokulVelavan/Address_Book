@@ -18,7 +18,7 @@ namespace Address_Book
             while (decide)
             {
 
-                Console.WriteLine("1.AddNewContact\n2.PrintContact\n3.EditContact\n4.Exit");
+                Console.WriteLine("1.AddNewContact\n2.PrintContact\n3.EditContact\n4.DeleteContact\n5.Exit");
                 Console.WriteLine("\nPlease Enter your choice");
                 int choice = Convert.ToInt32(Console.ReadLine());
                 switch (choice)
@@ -43,9 +43,12 @@ namespace Address_Book
                         break;
 
                     case 4:
-                        decide = false;
+                        obj1.removeContact();
                         break;
 
+                    case 5:
+                        decide = false;
+                        break;
                     default:
                         Console.WriteLine("Please Enter The Valid Data");
                         break;

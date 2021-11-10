@@ -90,6 +90,21 @@ namespace Address_Book
             Contact[i] = (email);
 
         }
+        public void deleteContactDetails(int i)
+        {
+
+            for(int j=0;j<7;j++)
+            {
+                for(int k=i;k<Contact.Count-1;k++)
+                Contact[k] = Contact[k + 1];//ovverriding the contact
+            }
+
+            for(int j=Contact.Count-7;j<=Contact.Count;j++)
+            {
+                Contact.RemoveAt(j); //removing the last dublicate value.
+            }
+
+        }
 
         public void printDetails() // Printing contact details
         {
@@ -113,6 +128,22 @@ namespace Address_Book
 
                 int  i=Contact.IndexOf(Name); ///finding the index of the name
                      editContactDetails(i); //passing the index to change the value
+            }
+            else
+            {
+                Console.WriteLine("Sorry We dont have that user");
+            }
+
+        }
+
+        public void removeContact()
+        {
+            Console.WriteLine("Please enter the Name you want to delete :\n");
+            Name = Console.ReadLine();//getting name
+            if (Contact.Contains(Name))//check the name present or not
+            {
+                int i = Contact.IndexOf(Name); ///finding the index of the name
+                deleteContactDetails(i); //passing the index to change the value
             }
             else
             {
