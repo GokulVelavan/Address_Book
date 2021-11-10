@@ -101,7 +101,7 @@ namespace Address_Book
 
             for(int j=Contact.Count-7;j<=Contact.Count;j++)
             {
-                Contact.RemoveAt(j); //removing the last dublicate value
+                Contact.RemoveAt(j); //removing the last dublicate value.
             }
 
         }
