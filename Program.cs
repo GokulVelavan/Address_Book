@@ -11,9 +11,9 @@ namespace Address_Book
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to Address Book.");
-            AddressBook obj1 = new AddressBook();
-            obj1.getContactDetails();
-            obj1.printDetails();
+           AddressBook obj1 = new AddressBook(); //creating object
+           obj1.getContactDetails();//adding data
+            obj1.printDetails(); //printing data
             Console.ReadLine();
 
         }
