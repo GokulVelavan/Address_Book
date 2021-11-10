@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace Address_Book
 {
     class AddressBook
@@ -16,6 +17,7 @@ namespace Address_Book
         int zipCode;
         long phoneNumber;
         string email;
+        
         public void getContactDetails()   // getting details from the person
         {
 
