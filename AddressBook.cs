@@ -45,6 +45,21 @@ namespace Address_Book
             email = Console.ReadLine();
 
             //Adding the contact details in array
+
+            bool flag = true;
+                
+                for (int i = 0; i < Contact.Count; i++)
+                {
+                    if(Contact[i]==firstName)
+                {
+                    flag = false;
+                }
+
+                }
+
+            if (flag)
+            {
+
             Contact.Add(firstName);
             Contact.Add(lastName);
             Contact.Add(address[0]);
@@ -52,6 +67,11 @@ namespace Address_Book
             Contact.Add(zipCode);
             Contact.Add(phoneNumber);
             Contact.Add(email);
+            }
+            else
+            {
+                Console.WriteLine("data is already present.");
+            }
 
         }
 
