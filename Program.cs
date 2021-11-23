@@ -48,9 +48,12 @@ namespace Address_Book
 
 
                     case 5:
-                        obj1.SearchPersonBYCity();//code to exit the loop
+                        obj1.SearchPersonBYCity();//search by city
                         break;
                     case 6:
+                        obj1.searchPersonbyState();//search by state
+                        break;
+                    case 7:
                         decide = false;//code to exit the loop
                         break;
                     default:

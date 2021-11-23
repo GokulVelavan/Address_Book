@@ -47,7 +47,9 @@ namespace Address_Book
         string Name;
 
 
-        private LinkedList<ContactList> addressBook = new LinkedList<ContactList>();
+        private LinkedList<ContactList> addressBook = new LinkedList<ContactList>();//to store data
+        public Dictionary<string, string> addressBookCity = new Dictionary<string, string>(); //to store address by city
+        public Dictionary<string, string> addressBookState = new Dictionary<string, string>(); //to store address by state 
         public void getContactDetails()   // getting details from the person
         {
 
@@ -196,6 +198,22 @@ namespace Address_Book
                 {
                     Console.WriteLine($"FirstName= {contactList.firstName} LastName= {contactList.lastName} Address= {contactList.address} city={contactList.city} state= {contactList.state} ZipCode= {contactList.zipCode} Phone= {contactList.phoneNumber} Email= {contactList.email}");
 
+                    addressBookCity.Add(cityName, contactList.firstName);
+                }
+            }
+        }
+
+        public void searchPersonbyState()
+        {
+            Console.WriteLine("\nEnter State Name");
+            string stateName = Console.ReadLine();
+            foreach (ContactList contactList in this.addressBook)
+            {
+
+                if (contactList.state == stateName)
+                {
+                    Console.WriteLine($"FirstName= {contactList.firstName} LastName= {contactList.lastName} Address= {contactList.address} city={contactList.city} state= {contactList.state} ZipCode= {contactList.zipCode} Phone= {contactList.phoneNumber} Email= {contactList.email}");
+                    addressBookState.Add(stateName, contactList.firstName);
                 }
             }
         }
