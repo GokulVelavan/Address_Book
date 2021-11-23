@@ -15,6 +15,7 @@ namespace Address_Book
             Console.WriteLine("Welcome to Address Book.");
             AddressBook obj1 = new AddressBook(); //creating object
 
+            Dictionary<string, AddressBook> addressBook_Dictionary = new Dictionary<string,AddressBook>();
             while (decide)
             {
 
@@ -52,11 +53,14 @@ namespace Address_Book
                         Console.WriteLine("Please Enter The Valid Data");
                         break;
                 }
-               
-
-
             }
-           
+            Console.WriteLine("\nEnter Address Book Name:");
+            string name = Console.ReadLine(); //name of address book
+            addressBook_Dictionary.Add(name,obj1);
+            foreach (var data in addressBook_Dictionary)
+            {
+                Console.WriteLine(data.Value);
+            }
 
             Console.ReadLine();
 
