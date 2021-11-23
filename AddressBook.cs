@@ -7,18 +7,47 @@ using System.Collections;
 
 namespace Address_Book
 {
+    internal class ContactList
+    {
+        public string firstName;
+        public string lastName;
+        public string[] address = new string[2];
+        public string city;
+        public string state;
+        public int zipCode;
+        public long phoneNumber;
+        public string email;
+
+
+        public ContactList(string firstName, string lastName, string[] address,string city, string state, int zipCode, long phoneNumber, string email)
+        {
+
+            this.firstName = firstName;
+            this.lastName = lastName;
+            this.address = address;
+            this.city = city;
+            this.state = state;
+            this.zipCode = zipCode;
+            this.phoneNumber = phoneNumber;
+            this.email = email;
+        }
+    }
+
     class AddressBook
     {
 
         string firstName;
         string lastName;
         string[] address = new string[2];
+        string city;
         string state;
         int zipCode;
         long phoneNumber;
         string email;
-        ArrayList Contact = new ArrayList();
         string Name;
+
+
+        private LinkedList<ContactList> addressBook = new LinkedList<ContactList>();
         public void getContactDetails()   // getting details from the person
         {
 
@@ -31,6 +60,9 @@ namespace Address_Book
             Console.WriteLine("Enter the Adresss");
             address[0] = Console.ReadLine();
 
+
+            Console.WriteLine("Enter the city");
+            city = Console.ReadLine();
 
             Console.WriteLine("Enter the State");
             state = Console.ReadLine();
@@ -47,26 +79,19 @@ namespace Address_Book
             //Adding the contact details in array
 
             bool flag = true;
-                
-                for (int i = 0; i < Contact.Count; i++)
-                {
-                    if(Contact[i]==firstName)
+
+            foreach (ContactList contactList in this.addressBook)
+            {
+                if(contactList.firstName==firstName)
                 {
                     flag = false;
                 }
-
-                }
+            }
 
             if (flag)
             {
-
-            Contact.Add(firstName);
-            Contact.Add(lastName);
-            Contact.Add(address[0]);
-            Contact.Add(state);
-            Contact.Add(zipCode);
-            Contact.Add(phoneNumber);
-            Contact.Add(email);
+                ContactList contactList = new ContactList(firstName, lastName, address,city, state, zipCode, phoneNumber, email);
+                this.addressBook.AddLast(contactList);
             }
             else
             {
@@ -74,112 +99,105 @@ namespace Address_Book
             }
 
         }
-
-        public void editContactDetails(int i)   // getting details from the person
-        {
-
-            Console.WriteLine("Enter the First Name");
-            firstName = Console.ReadLine();
-
-            Console.WriteLine("Enter the Last Name");
-            lastName = Console.ReadLine();
-
-            Console.WriteLine("Enter the Adresss");
-            address[0] = Console.ReadLine();
-
-
-            Console.WriteLine("Enter the State");
-            state = Console.ReadLine();
-
-            Console.WriteLine("Enter the Zip Code");
-            zipCode = Convert.ToInt32(Console.ReadLine());
-
-            Console.WriteLine("Enter the Phone Number");
-            phoneNumber = Convert.ToInt64(Console.ReadLine());
-
-            Console.WriteLine("Enter the Email");
-            email = Console.ReadLine();
-
-            //Editing the contact details by the index
-            Contact[i++] = firstName;
-            Contact[i++] = (lastName);
-            Contact[i++] = (address[0]);
-            Contact[i++] = (state);
-            Contact[i++] = (zipCode);
-            Contact[i++] = (phoneNumber);
-            Contact[i] = (email);
-
-        }
-        public void deleteContactDetails(int i)
-        {
-
-            for(int j=0;j<7;j++)
-            {
-                for(int k=i;k<Contact.Count-1;k++)
-                Contact[k] = Contact[k + 1];//ovverriding the contact
-            }
-
-            for(int j=Contact.Count-7;j<=Contact.Count;j++)
-            {
-                Contact.RemoveAt(j); //removing the last dublicate value.
-            }
-
-        }
+        
 
         public void printDetails() // Printing contact details
         {
-            if (Contact.Count != 0)
-            {
-                Console.WriteLine("Contact_Details");
-
-                for (int i = 0; i < Contact.Count; i++)
+           
+                foreach (ContactList contactList in this.addressBook)
                 {
-                    Console.Write(Contact[i] + "   ");
-                    Console.WriteLine("\n");
+                    Console.WriteLine($"FirstName= {contactList.firstName} LastName= {contactList.lastName} Address= {contactList.address} city={contactList.city} state= {contactList.state} ZipCode= {contactList.zipCode} Phone= {contactList.phoneNumber} Email= {contactList.email}");
+
                 }
-            }
-            else
-            {
-                Console.WriteLine("No address details were added");
-            }
+            
         }
 
         public void editContact() //Program to edit contact
         {
-            Console.WriteLine("Please enter the Name you want to edit :\n");
-             Name = Console.ReadLine();//getting name
-
-            if (Contact.Contains(Name))//check the name present or not
+            Console.WriteLine("Enter the name ");
+            string name = Console.ReadLine();
+            bool FLAG = true;
+            foreach (ContactList contactList in this.addressBook)
             {
 
-                int  i=Contact.IndexOf(Name); ///finding the index of the name
-                     editContactDetails(i); //passing the index to change the value
-                Console.WriteLine("Data is  edited :\n");
+                if (contactList.firstName == name)
+                {
+                    Console.WriteLine($"FirstName= {contactList.firstName} LastName= {contactList.lastName} Address= {contactList.address} city={contactList.city} state= {contactList.state} ZipCode= {contactList.zipCode} Phone= {contactList.phoneNumber} Email= {contactList.email}");
+                    Console.WriteLine("\nthe {0} is present you can edit the details...", contactList.firstName);
+                    Console.WriteLine("enter the details");
+
+                    Console.WriteLine("Enter the First Name");
+                    contactList.firstName = Console.ReadLine();
+
+                    Console.WriteLine("Enter the Last Name");
+                    contactList.lastName = Console.ReadLine();
+
+                    Console.WriteLine("Enter the Adresss");
+                    contactList.address[0] = Console.ReadLine();
+
+                    Console.WriteLine("Enter the city");
+                    contactList.city = Console.ReadLine();
+
+                    Console.WriteLine("Enter the State");
+                    contactList.state = Console.ReadLine();
+
+                    Console.WriteLine("Enter the Zip Code");
+                    contactList.zipCode = Convert.ToInt32(Console.ReadLine());
+
+                    Console.WriteLine("Enter the Phone Number");
+                    contactList.phoneNumber = Convert.ToInt64(Console.ReadLine());
+
+                    Console.WriteLine("Enter the Email");
+                    contactList.email = Console.ReadLine();
+
+                    Console.WriteLine("updeted detalis List");
+                    FLAG = false;
+                }
 
             }
-            else
+            if(FLAG)
             {
-                Console.WriteLine("Sorry We dont have that user");
-            }
+                Console.WriteLine("sorry we dont have that contact");
 
+            }
         }
 
         public void removeContact()
         {
             Console.WriteLine("Please enter the Name you want to delete :\n");
             Name = Console.ReadLine();//getting name
-            if (Contact.Contains(Name))//check the name present or not
+            bool FLAG = true;
+
+            foreach (ContactList contactList in this.addressBook)
             {
-                int i = Contact.IndexOf(Name); ///finding the index of the name
-                deleteContactDetails(i); //passing the index to change the value
-                Console.WriteLine("Data is  deleted :\n");
+
+                if (contactList.firstName == Name)
+                {
+                    addressBook.Remove(contactList);
+                    break;
+                    FLAG = false;
+
+                }
+            }
+            if (FLAG)
+            {
+                Console.WriteLine("sorry we dont have that contact");
 
             }
-            else
+        }
+        public void SearchPersonBYCity()//search person by city
+        {
+            Console.WriteLine("\nEnter City Name to search person with city");
+            string cityName = Console.ReadLine();
+            foreach (ContactList contactList in this.addressBook)
             {
-                Console.WriteLine("Sorry We dont have that user");
-            }
 
+                if (contactList.city == city)
+                {
+                    Console.WriteLine($"FirstName= {contactList.firstName} LastName= {contactList.lastName} Address= {contactList.address} city={contactList.city} state= {contactList.state} ZipCode= {contactList.zipCode} Phone= {contactList.phoneNumber} Email= {contactList.email}");
+
+                }
+            }
         }
-        }
+    }
 }

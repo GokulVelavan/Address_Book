@@ -19,7 +19,7 @@ namespace Address_Book
             while (decide)
             {
 
-                Console.WriteLine("1.AddNewContact\n2.PrintContact\n3.EditContact\n4.DeleteContact\n5.Exit");
+                Console.WriteLine("1.AddNewContact\n2.PrintContact\n3.EditContact\n4.DeleteContact\n5.Search by City\n6.Exit");
                 Console.WriteLine("\nPlease Enter your choice");
                 int choice = Convert.ToInt32(Console.ReadLine());
                 switch (choice)
@@ -46,7 +46,11 @@ namespace Address_Book
                         obj1.removeContact(); //remove contact details
                         break;
 
+
                     case 5:
+                        obj1.SearchPersonBYCity();//code to exit the loop
+                        break;
+                    case 6:
                         decide = false;//code to exit the loop
                         break;
                     default:
