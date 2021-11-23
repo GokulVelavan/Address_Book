@@ -217,5 +217,31 @@ namespace Address_Book
                 }
             }
         }
+
+        public void getcount()
+        {
+            int count1=0, count2=0;
+            Console.WriteLine("\nEnter City name");
+            string city = Console.ReadLine();
+
+            Console.WriteLine("\nEnter Sate Name");
+            string state = Console.ReadLine();
+
+            foreach (ContactList contactList in this.addressBook)
+            {
+
+                if (contactList.state == state)
+                {
+                    count1++;
+                }
+                if(contactList.city==city)
+                {
+                    count2++;
+                }
+            }
+            Console.WriteLine("\nCount by state: " + count1);
+
+            Console.WriteLine("\nCount by city: " + count2);
+        }
     }
 }
