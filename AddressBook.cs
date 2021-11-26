@@ -47,7 +47,7 @@ namespace Address_Book
         string Name;
 
 
-        private LinkedList<ContactList> addressBook = new LinkedList<ContactList>();//to store data
+        private List<ContactList> addressBook = new List<ContactList>();//to store data
         public Dictionary<string, string> addressBookCity = new Dictionary<string, string>(); //to store address by city
         public Dictionary<string, string> addressBookState = new Dictionary<string, string>(); //to store address by state 
         public void getContactDetails()   // getting details from the person
@@ -93,7 +93,7 @@ namespace Address_Book
             if (flag)
             {
                 ContactList contactList = new ContactList(firstName, lastName, address,city, state, zipCode, phoneNumber, email);
-                this.addressBook.AddLast(contactList);
+                this.addressBook.Add(contactList);
             }
             else
             {
@@ -242,6 +242,11 @@ namespace Address_Book
             Console.WriteLine("\nCount by state: " + count1);
 
             Console.WriteLine("\nCount by city: " + count2);
+        }
+
+        public void SortByName()
+        { 
+            addressBook=addressBook.OrderBy(p => p.firstName).ToList();       
         }
     }
 }
