@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -265,8 +266,51 @@ namespace Address_Book
             {
                 addressBook = addressBook.OrderBy(p => p.zipCode).ToList();
             }
-          
+            
         }
 
+
+        public  void WriteDataInFile()
+        {
+           
+            string path = @"C:\Users\INFINITY\source\repos\Address_Book\AddressBookFile.txt";
+            using (StreamWriter se = File.AppendText(path))//extension
+
+            {
+           
+                foreach (ContactList items in  addressBook)//writing in file
+                {
+
+                    se.WriteLine("First Name -" + items.firstName);
+                    se.WriteLine("Last Name -" + items.lastName);
+                    se.WriteLine("Address -" + items.address);
+                    se.WriteLine("Phone Number - " + items.phoneNumber);
+                    se.WriteLine("Email ID -" + items.email);
+                    se.WriteLine("City -" + items.city);
+                    se.WriteLine("State -" + items.state);
+                    se.WriteLine("ZIP code -" + items.zipCode);
+                    se.WriteLine("--------------------------------------------------------------");
+                }
+                se.Close();
+                Console.WriteLine(File.ReadAllText(path));
+                
+            }
+        
+        }
+        public  void ReadDataInFile()//reading from file
+        {
+
+            string path = @"C:\Users\INFINITY\source\repos\Address_Book\AddressBookFile.txt";
+
+            using (StreamReader se = File.OpenText(path))
+            {
+                string s = " ";
+                while ((s = se.ReadLine()) != null)
+                {
+                    Console.WriteLine(s);
+                }
+
+            }
+        }
     }
 }
