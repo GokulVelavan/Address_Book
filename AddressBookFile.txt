@@ -1,0 +1,9 @@
+First Name -Gokul
+Last Name -Velavan
+Address -System.String[]
+Phone Number - 98541265
+Email ID -gokul@gmai.com
+City -kanyakumari
+State -TamilNdu
+ZIP code -1346
+--------------------------------------------------------------

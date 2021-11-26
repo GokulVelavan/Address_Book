@@ -19,7 +19,7 @@ namespace Address_Book
             while (decide)
             {
 
-                Console.WriteLine("1.AddNewContact\n2.PrintContact\n3.EditContact\n4.DeleteContact\n5.Search by City\n6.Search by state\n7.getcount by city or state\n8Sort by Name\n9Sort by data\n10.Exit");
+                Console.WriteLine("1.AddNewContact\n2.PrintContact\n3.EditContact\n4.DeleteContact\n5.Search by City\n6.Search by state\n7.getcount by city or state\n8.Sort by Name\n9.Sort by data\n10.Write Data in File \n11.Read Data in File \n12.Exit");
                 Console.WriteLine("\nPlease Enter your choice");
                 int choice = Convert.ToInt32(Console.ReadLine());
                 switch (choice)
@@ -63,6 +63,12 @@ namespace Address_Book
                         obj1.SortByData();//sort by ,zip
                         break;
                     case 10:
+                        obj1.WriteDataInFile();
+                        break;
+                    case 11:
+                        obj1.ReadDataInFile();
+                        break;
+                    case 12:
                         decide = false;//code to exit the loop
                         break;
                     default:
