@@ -84,7 +84,7 @@ namespace Address_Book
 
             foreach (ContactList contactList in this.addressBook)
             {
-                if(contactList.firstName==firstName)
+                if (contactList.firstName == firstName)
                 {
                     flag = false;
                 }
@@ -92,7 +92,7 @@ namespace Address_Book
 
             if (flag)
             {
-                ContactList contactList = new ContactList(firstName, lastName, address,city, state, zipCode, phoneNumber, email);
+                ContactList contactList = new ContactList(firstName, lastName, address, city, state, zipCode, phoneNumber, email);
                 this.addressBook.Add(contactList);
             }
             else
@@ -101,17 +101,17 @@ namespace Address_Book
             }
 
         }
-        
+
 
         public void printDetails() // Printing contact details
         {
-           
-                foreach (ContactList contactList in this.addressBook)
-                {
-                    Console.WriteLine($"FirstName= {contactList.firstName} LastName= {contactList.lastName} Address= {contactList.address} city={contactList.city} state= {contactList.state} ZipCode= {contactList.zipCode} Phone= {contactList.phoneNumber} Email= {contactList.email}");
 
-                }
-            
+            foreach (ContactList contactList in this.addressBook)
+            {
+                Console.WriteLine($"FirstName= {contactList.firstName} LastName= {contactList.lastName} Address= {contactList.address} city={contactList.city} state= {contactList.state} ZipCode= {contactList.zipCode} Phone= {contactList.phoneNumber} Email= {contactList.email}");
+
+            }
+
         }
 
         public void editContact() //Program to edit contact
@@ -157,7 +157,7 @@ namespace Address_Book
                 }
 
             }
-            if(FLAG)
+            if (FLAG)
             {
                 Console.WriteLine("sorry we dont have that contact");
 
@@ -220,7 +220,7 @@ namespace Address_Book
 
         public void getcount()
         {
-            int count1=0, count2=0;
+            int count1 = 0, count2 = 0;
             Console.WriteLine("\nEnter City name");
             string city = Console.ReadLine();
 
@@ -234,7 +234,7 @@ namespace Address_Book
                 {
                     count1++;
                 }
-                if(contactList.city==city)
+                if (contactList.city == city)
                 {
                     count2++;
                 }
@@ -245,8 +245,28 @@ namespace Address_Book
         }
 
         public void SortByName()
-        { 
-            addressBook=addressBook.OrderBy(p => p.firstName).ToList();       
+        {
+            addressBook = addressBook.OrderBy(p => p.firstName).ToList();
         }
+
+        public void SortByData()
+        {
+            Console.WriteLine("Enter the number to sort BY. 1-City, 2- State, 3- Zip");
+            int n = Convert.ToInt32(Console.ReadLine());
+            if (n == 1)
+            {
+                addressBook = addressBook.OrderBy(p => p.city).ToList();
+            }
+            else if (n == 2)
+            {
+                addressBook = addressBook.OrderBy(p => p.state).ToList();
+            }
+            else if (n == 3)
+            {
+                addressBook = addressBook.OrderBy(p => p.zipCode).ToList();
+            }
+          
+        }
+
     }
 }
