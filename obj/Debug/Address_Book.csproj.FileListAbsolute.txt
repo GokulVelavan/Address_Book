@@ -1,0 +1,7 @@
+C:\Users\INFINITY\source\repos\Address_Book\bin\Debug\Address_Book.exe.config
+C:\Users\INFINITY\source\repos\Address_Book\bin\Debug\Address_Book.exe
+C:\Users\INFINITY\source\repos\Address_Book\bin\Debug\Address_Book.pdb
+C:\Users\INFINITY\source\repos\Address_Book\obj\Debug\Address_Book.csproj.AssemblyReference.cache
+C:\Users\INFINITY\source\repos\Address_Book\obj\Debug\Address_Book.csproj.CoreCompileInputs.cache
+C:\Users\INFINITY\source\repos\Address_Book\obj\Debug\Address_Book.exe
+C:\Users\INFINITY\source\repos\Address_Book\obj\Debug\Address_Book.pdb
