@@ -2,36 +2,28 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Globalization;
+using CsvHelper;
 using System.Text;
 using System.Threading.Tasks;
 using System.Collections;
 
+
 namespace Address_Book
 {
-    internal class ContactList
+    public class ContactList
     {
-        public string firstName;
-        public string lastName;
-        public string[] address = new string[2];
-        public string city;
-        public string state;
-        public int zipCode;
-        public long phoneNumber;
-        public string email;
+        public string firstName { get; set; }
+        public string lastName { get; set; }
+        public string address { get; set; }
+        public string city { get; set; }
+        public string state { get; set; }
+        public string zipCode { get; set; }
+        public string phoneNumber { get; set; }
+        public string email { get; set; }
 
 
-        public ContactList(string firstName, string lastName, string[] address,string city, string state, int zipCode, long phoneNumber, string email)
-        {
 
-            this.firstName = firstName;
-            this.lastName = lastName;
-            this.address = address;
-            this.city = city;
-            this.state = state;
-            this.zipCode = zipCode;
-            this.phoneNumber = phoneNumber;
-            this.email = email;
-        }
     }
 
     class AddressBook
@@ -42,8 +34,8 @@ namespace Address_Book
         string[] address = new string[2];
         string city;
         string state;
-        int zipCode;
-        long phoneNumber;
+        string zipCode;
+        string phoneNumber;
         string email;
         string Name;
 
@@ -71,10 +63,10 @@ namespace Address_Book
             state = Console.ReadLine();
 
             Console.WriteLine("Enter the Zip Code");
-            zipCode = Convert.ToInt32(Console.ReadLine());
+            zipCode = Console.ReadLine();
 
             Console.WriteLine("Enter the Phone Number");
-            phoneNumber = Convert.ToInt64(Console.ReadLine());
+            phoneNumber =Console.ReadLine();
 
             Console.WriteLine("Enter the Email");
             email = Console.ReadLine();
@@ -93,7 +85,7 @@ namespace Address_Book
 
             if (flag)
             {
-                ContactList contactList = new ContactList(firstName, lastName, address, city, state, zipCode, phoneNumber, email);
+                ContactList contactList = new ContactList();
                 this.addressBook.Add(contactList);
             }
             else
@@ -136,7 +128,7 @@ namespace Address_Book
                     contactList.lastName = Console.ReadLine();
 
                     Console.WriteLine("Enter the Adresss");
-                    contactList.address[0] = Console.ReadLine();
+                    contactList.address = Console.ReadLine();
 
                     Console.WriteLine("Enter the city");
                     contactList.city = Console.ReadLine();
@@ -145,10 +137,10 @@ namespace Address_Book
                     contactList.state = Console.ReadLine();
 
                     Console.WriteLine("Enter the Zip Code");
-                    contactList.zipCode = Convert.ToInt32(Console.ReadLine());
+                    contactList.zipCode = Console.ReadLine();
 
                     Console.WriteLine("Enter the Phone Number");
-                    contactList.phoneNumber = Convert.ToInt64(Console.ReadLine());
+                    contactList.phoneNumber = Console.ReadLine();
 
                     Console.WriteLine("Enter the Email");
                     contactList.email = Console.ReadLine();
@@ -266,19 +258,19 @@ namespace Address_Book
             {
                 addressBook = addressBook.OrderBy(p => p.zipCode).ToList();
             }
-            
+
         }
 
 
-        public  void WriteDataInFile()
+        public void WriteDataInFile()
         {
-           
+
             string path = @"C:\Users\INFINITY\source\repos\Address_Book\AddressBookFile.txt";
             using (StreamWriter se = File.AppendText(path))//extension
 
             {
-           
-                foreach (ContactList items in  addressBook)//writing in file
+
+                foreach (ContactList items in addressBook)//writing in file
                 {
 
                     se.WriteLine("First Name -" + items.firstName);
@@ -293,11 +285,11 @@ namespace Address_Book
                 }
                 se.Close();
                 Console.WriteLine(File.ReadAllText(path));
-                
+
             }
-        
+
         }
-        public  void ReadDataInFile()//reading from file
+        public void ReadDataInFile()//reading from file
         {
 
             string path = @"C:\Users\INFINITY\source\repos\Address_Book\AddressBookFile.txt";
@@ -309,8 +301,10 @@ namespace Address_Book
                 {
                     Console.WriteLine(s);
                 }
-
+               
             }
+            
         }
+
     }
 }
